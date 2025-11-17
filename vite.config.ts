@@ -6,7 +6,7 @@ import path from 'node:path';
 // https://vite.dev/config/
 export default defineConfig({
   server: {
-    host: '0.0.0.0'
+    host: '0.0.0.0',
   },
   plugins: [
     react({

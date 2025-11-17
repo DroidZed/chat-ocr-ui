@@ -1,8 +1,8 @@
-import { useEffect } from 'react'
-import { useForm, useFieldArray } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Plus, Trash2 } from 'lucide-react'
-import { z } from 'zod'
+import { useEffect } from 'react';
+import { useForm, useFieldArray } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Plus, Trash2 } from 'lucide-react';
+import { z } from 'zod';
 import {
   Dialog,
   DialogContent,
@@ -10,28 +10,30 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '../ui/dialog'
-import { Button } from '../ui/button'
-import { cn } from '../../lib/utils'
-import type { OcrKey } from '../../schemas'
+} from '../ui/dialog';
+import { Button } from '../ui/button';
+import { cn } from '../../lib/utils';
+import type { OcrKey } from '../../core/schemas';
 
 const ocrKeysFormSchema = z.object({
-  keys: z.array(
-    z.object({
-      id: z.string(),
-      key: z.string().min(1, 'Key cannot be empty'),
-    })
-  ).min(1, 'At least one key is required'),
-})
+  keys: z
+    .array(
+      z.object({
+        id: z.string(),
+        key: z.string().min(1, 'Key cannot be empty'),
+      })
+    )
+    .min(1, 'At least one key is required'),
+});
 
-type OcrKeysFormData = z.infer<typeof ocrKeysFormSchema>
+type OcrKeysFormData = z.infer<typeof ocrKeysFormSchema>;
 
 interface OcrKeysDialogProps {
-  open: boolean
-  onOpenChange: (open: boolean) => void
-  onSubmit: (keys: OcrKey[]) => void
-  fileName: string
-  initialKeys?: OcrKey[]
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  onSubmit: (keys: OcrKey[]) => void;
+  fileName: string;
+  initialKeys?: OcrKey[];
 }
 
 export default function OcrKeysDialog({
@@ -51,38 +53,44 @@ export default function OcrKeysDialog({
     resolver: zodResolver(ocrKeysFormSchema),
     mode: 'onChange',
     defaultValues: {
-      keys: initialKeys.length > 0 ? initialKeys : [{ id: crypto.randomUUID(), key: '' }],
+      keys:
+        initialKeys.length > 0
+          ? initialKeys
+          : [{ id: crypto.randomUUID(), key: '' }],
     },
-  })
+  });
 
   const { fields, append, remove } = useFieldArray({
     control,
     name: 'keys',
-  })
+  });
 
   // Reset form when dialog opens
   useEffect(() => {
     if (open) {
       reset({
-        keys: initialKeys.length > 0 ? initialKeys : [{ id: crypto.randomUUID(), key: '' }],
-      })
+        keys:
+          initialKeys.length > 0
+            ? initialKeys
+            : [{ id: crypto.randomUUID(), key: '' }],
+      });
     }
-  }, [open, initialKeys, reset])
+  }, [open, initialKeys, reset]);
 
   const handleFormSubmit = (data: OcrKeysFormData) => {
-    onSubmit(data.keys)
-    onOpenChange(false)
-  }
+    onSubmit(data.keys);
+    onOpenChange(false);
+  };
 
   const handleAddKey = () => {
-    append({ id: crypto.randomUUID(), key: '' })
-  }
+    append({ id: crypto.randomUUID(), key: '' });
+  };
 
   const handleRemoveKey = (index: number) => {
     if (fields.length > 1) {
-      remove(index)
+      remove(index);
     }
-  }
+  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -90,11 +98,15 @@ export default function OcrKeysDialog({
         <DialogHeader>
           <DialogTitle>Add OCR Keys</DialogTitle>
           <DialogDescription>
-            Specify the keys you're looking for in <span className="font-medium text-gray-700">{fileName}</span>
+            Specify the keys you're looking for in{' '}
+            <span className="font-medium text-gray-700">{fileName}</span>
           </DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6 mt-4">
+        <form
+          onSubmit={handleSubmit(handleFormSubmit)}
+          className="space-y-6 mt-4"
+        >
           <div className="max-h-[400px] overflow-y-auto pr-2 space-y-4">
             {fields.map((field, index) => (
               <div key={field.id} className="mx-3 flex items-start gap-3">
@@ -168,5 +180,5 @@ export default function OcrKeysDialog({
         </form>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

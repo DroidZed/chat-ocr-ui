@@ -2,9 +2,8 @@ import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
-} from "@/components/ui/navigation-menu"
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
-
+} from '@/components/ui/navigation-menu';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 
 export default function NavBar() {
   return (
@@ -22,7 +21,6 @@ export default function NavBar() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-
     </div>
   );
 }

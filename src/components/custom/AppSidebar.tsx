@@ -1,5 +1,5 @@
-import { Badge } from "@/components/ui/badge"
-import { Separator } from "@/components/ui/separator"
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
 import {
   Sidebar,
   SidebarContent,
@@ -10,7 +10,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from '@/components/ui/sidebar';
 
 import {
   Home,
@@ -24,82 +24,81 @@ import {
   BarChart3,
   FolderOpen,
   Star,
-  Activity
-} from "lucide-react"
+  Activity,
+} from 'lucide-react';
 
 const mainItems = [
   {
-    title: "Dashboard",
-    url: "#",
+    title: 'Dashboard',
+    url: '#',
     icon: Home,
   },
   {
-    title: "New Scan",
-    url: "#",
+    title: 'New Scan',
+    url: '#',
     icon: Scan,
-    badge: "Hot"
+    badge: 'Hot',
   },
   {
-    title: "AI Chat",
-    url: "#",
+    title: 'AI Chat',
+    url: '#',
     icon: Upload,
-
   },
-]
+];
 
 const documentsItems = [
   {
-    title: "All Documents",
-    url: "#",
+    title: 'All Documents',
+    url: '#',
     icon: FileText,
   },
   {
-    title: "Folders",
-    url: "#",
+    title: 'Folders',
+    url: '#',
     icon: FolderOpen,
   },
   {
-    title: "Starred",
-    url: "#",
+    title: 'Starred',
+    url: '#',
     icon: Star,
   },
   {
-    title: "Recent",
-    url: "#",
+    title: 'Recent',
+    url: '#',
     icon: History,
   },
-]
+];
 
 const managementItems = [
   {
-    title: "Analytics",
-    url: "#",
+    title: 'Analytics',
+    url: '#',
     icon: BarChart3,
   },
   {
-    title: "Team Members",
-    url: "#",
+    title: 'Team Members',
+    url: '#',
     icon: Users,
   },
   {
-    title: "Activity Log",
-    url: "#",
+    title: 'Activity Log',
+    url: '#',
     icon: Activity,
   },
-]
+];
 
 const bottomItems = [
   {
-    title: "Settings",
-    url: "#",
+    title: 'Settings',
+    url: '#',
     icon: Settings,
   },
   {
-    title: "Help & Support",
-    url: "#",
+    title: 'Help & Support',
+    url: '#',
     icon: HelpCircle,
   },
-]
+];
 
 export default function AppSidebar() {
   return (
@@ -126,12 +125,18 @@ export default function AppSidebar() {
             <SidebarMenu className="space-y-1">
               {mainItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className="h-10 hover:bg-accent/50 transition-colors">
+                  <SidebarMenuButton
+                    asChild
+                    className="h-10 hover:bg-accent/50 transition-colors"
+                  >
                     <a href={item.url} className="flex items-center gap-3">
                       <item.icon className="h-4 w-4 text-muted-foreground" />
                       <span className="font-medium">{item.title}</span>
                       {item.badge && (
-                        <Badge variant="secondary" className="ml-auto text-xs px-2 py-0">
+                        <Badge
+                          variant="secondary"
+                          className="ml-auto text-xs px-2 py-0"
+                        >
                           {item.badge}
                         </Badge>
                       )}
@@ -154,7 +159,10 @@ export default function AppSidebar() {
             <SidebarMenu className="space-y-1">
               {documentsItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className="h-10 hover:bg-accent/50 transition-colors">
+                  <SidebarMenuButton
+                    asChild
+                    className="h-10 hover:bg-accent/50 transition-colors"
+                  >
                     <a href={item.url} className="flex items-center gap-3">
                       <item.icon className="h-4 w-4 text-muted-foreground" />
                       <span className="font-medium">{item.title}</span>
@@ -177,7 +185,10 @@ export default function AppSidebar() {
             <SidebarMenu className="space-y-1">
               {managementItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className="h-10 hover:bg-accent/50 transition-colors">
+                  <SidebarMenuButton
+                    asChild
+                    className="h-10 hover:bg-accent/50 transition-colors"
+                  >
                     <a href={item.url} className="flex items-center gap-3">
                       <item.icon className="h-4 w-4 text-muted-foreground" />
                       <span className="font-medium">{item.title}</span>
@@ -197,7 +208,10 @@ export default function AppSidebar() {
             <SidebarMenu className="space-y-1">
               {bottomItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className="h-10 px-3 hover:bg-accent/50 transition-colors">
+                  <SidebarMenuButton
+                    asChild
+                    className="h-10 px-3 hover:bg-accent/50 transition-colors"
+                  >
                     <a href={item.url} className="flex items-center gap-3">
                       <item.icon className="h-4 w-4 text-muted-foreground" />
                       <span className="font-medium">{item.title}</span>
@@ -210,5 +224,5 @@ export default function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }

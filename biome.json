@@ -31,10 +31,7 @@
     "rules": {
       "recommended": false
     },
-    "includes": [
-      "**",
-      "!dist"
-    ]
+    "includes": ["**", "!dist"]
   },
   "javascript": {
     "formatter": {
@@ -57,9 +54,7 @@
   },
   "overrides": [
     {
-      "includes": [
-        "**/*.{ts,tsx}"
-      ],
+      "includes": ["**/*.{ts,tsx}"],
       "linter": {
         "rules": {
           "complexity": {
@@ -127,9 +122,7 @@
       }
     },
     {
-      "includes": [
-        "**/*.{ts,tsx}"
-      ],
+      "includes": ["**/*.{ts,tsx}"],
       "javascript": {
         "globals": []
       }
@@ -180,9 +173,7 @@
       }
     },
     {
-      "includes": [
-        "**/*.{ts,tsx}"
-      ],
+      "includes": ["**/*.{ts,tsx}"],
       "linter": {
         "rules": {
           "complexity": {
@@ -209,9 +200,7 @@
       }
     },
     {
-      "includes": [
-        "**/*.{ts,tsx}"
-      ],
+      "includes": ["**/*.{ts,tsx}"],
       "linter": {
         "rules": {
           "correctness": {
@@ -222,17 +211,13 @@
       }
     },
     {
-      "includes": [
-        "**/*.{ts,tsx}"
-      ],
+      "includes": ["**/*.{ts,tsx}"],
       "linter": {
         "rules": {}
       }
     },
     {
-      "includes": [
-        "**/*.{ts,tsx}"
-      ],
+      "includes": ["**/*.{ts,tsx}"],
       "javascript": {
         "globals": [
           "onanimationend",
