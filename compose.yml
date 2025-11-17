@@ -1,0 +1,76 @@
+services:
+  n8n:
+    container_name: n8n-workflow
+    image: docker.n8n.io/n8nio/n8n
+    ports:
+      - "5678:5678"
+    environment:
+      - GENERIC_TIMEZONE=Africa/Tunis
+      - TZ=Africa/Tunis
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - N8N_RUNNERS_ENABLED=true
+      - DB_SQLITE_POOL_SIZE=100
+      - N8N_BLOCK_ENV_ACCESS_IN_NODE=true
+      - N8N_GIT_NODE_DISABLE_BARE_REPOS=false
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=postgresDB
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_DATABASE=postgres
+      - DB_POSTGRESDB_USER=postgres
+      - DB_POSTGRESDB_PASSWORD=postgres
+      - DB_POSTGRESDB_SCHEMA=public
+    networks:
+      - n8network
+    volumes:
+      - n8n_data:/home/node/.n8n
+    depends_on:
+      ollama:
+        condition: service_started
+      postgresDB:
+        condition: service_healthy
+
+  ollama:
+    container_name: ollama
+    image: ollama/ollama
+    environment:
+      - OLLAMA_ORIGINS=*
+    ports:
+      - "11434:11434"
+    networks:
+      - n8network
+    volumes:
+      - ollama:/root/.ollama
+    # gpus: all
+
+  postgresDB:
+    container_name: pg-db
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - n8network
+    volumes:
+      - pg_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  ollama:
+    external: true
+    name: ollama_data
+  n8n_data:
+    external: true
+    name: n8n_data
+  pg_data:
+    external: true
+    name: pg_data
+networks:
+  n8network:
+    driver: bridge
