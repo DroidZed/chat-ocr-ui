@@ -15,7 +15,7 @@ const uploadOcrData = async (
   formData.append('keys_to_extract', JSON.stringify(payload.keys_to_extract));
 
   const { data } = await defaultInstance.post<OcrUploadResponse>(
-    '/ocr/extract',
+    '/webhook-test/eb67ca23-48ba-4848-93a1-10d80073dfbe',
     formData,
     {
       headers: {
