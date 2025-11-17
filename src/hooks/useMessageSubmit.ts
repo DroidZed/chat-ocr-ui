@@ -55,7 +55,7 @@ export const useMessageSubmit = () => {
           addMessage({
             text: 'Here are the extracted fields from your document:',
             sender: 'assistant',
-            ocrResponse: response.ai_response,
+            ocrResponse: response[0].ai_response,
           });
 
           clearUploadedImage();

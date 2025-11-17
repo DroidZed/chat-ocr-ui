@@ -8,13 +8,13 @@ import type {
 
 const uploadOcrData = async (
   payload: OcrUploadPayload
-): Promise<OcrUploadResponse> => {
+): Promise<OcrUploadResponse[]> => {
   const formData = new FormData();
 
   formData.append('image', payload.image);
   formData.append('keys_to_extract', JSON.stringify(payload.keys_to_extract));
 
-  const { data } = await defaultInstance.post<OcrUploadResponse>(
+  const { data } = await defaultInstance.post<OcrUploadResponse[]>(
     '/webhook-test/eb67ca23-48ba-4848-93a1-10d80073dfbe',
     formData,
     {
@@ -29,11 +29,11 @@ const uploadOcrData = async (
 
 export const useOcrUpload = (
   options?: Omit<
-    UseMutationOptions<OcrUploadResponse, AxiosError, OcrUploadPayload>,
+    UseMutationOptions<OcrUploadResponse[], AxiosError, OcrUploadPayload>,
     'mutationFn'
   >
 ) => {
-  return useMutation<OcrUploadResponse, AxiosError, OcrUploadPayload>({
+  return useMutation<OcrUploadResponse[], AxiosError, OcrUploadPayload>({
     mutationFn: uploadOcrData,
     ...options,
   });

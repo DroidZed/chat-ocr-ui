@@ -24,7 +24,7 @@ export const useFileUpload = () => {
       if (!file) return;
 
       if (!isValidFileType(file)) {
-        alert('Please upload only images (JPEG, PNG, GIF, WebP) or PDF files.');
+        alert('Please upload only images (JPEG, PNG) or PDF files.');
         if (fileInputRef.current) {
           fileInputRef.current.value = '';
         }

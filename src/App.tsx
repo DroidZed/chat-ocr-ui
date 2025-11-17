@@ -1,15 +1,20 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './components/custom/NavBar';
-import { defaultQueryClient } from './core/network/queryClient';
+import LandingPage from './pages/LandingPage';
 import HomeScreen from './pages/HomeScreen';
-import { QueryClientProvider } from '@tanstack/react-query';
+import AboutPage from './pages/AboutPage';
 
 export default function App() {
   return (
-    <QueryClientProvider client={defaultQueryClient}>
+    <Router>
       <main className="flex flex-col h-full w-full">
         <NavBar />
-        <HomeScreen />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/chat" element={<HomeScreen />} />
+          <Route path="/about" element={<AboutPage />} />
+        </Routes>
       </main>
-    </QueryClientProvider>
+    </Router>
   );
 }

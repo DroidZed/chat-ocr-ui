@@ -1,5 +1,6 @@
 export { default as AppSidebar } from './AppSidebar';
 export { default as NavBar } from './NavBar';
+export { default as Footer } from './Footer';
 export { default as OcrKeysDialog } from './OcrKeysDialog';
 export { default as OcrKeysDialogContainer } from './OcrKeysDialogContainer';
 export { default as ChatHeader } from './ChatHeader';
