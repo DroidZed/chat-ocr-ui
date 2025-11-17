@@ -49,6 +49,11 @@ export const useFileUpload = () => {
       }
 
       setIsKeysDialogOpen(true);
+
+      // Reset file input to allow uploading the same or different file again
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
     },
     [setUploadedImage, setIsKeysDialogOpen]
   );
