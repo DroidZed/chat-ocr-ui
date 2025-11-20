@@ -39,7 +39,7 @@ npm install
 
 ### 3. Configure Environment Variables
 
-Create a `.env` file in the root directory of the project (refer to [.env.example](./.env.example`)):
+Create a `.env` file in the root directory of the project (refer to [.env.example](./.env.example)):
 
 ```bash
 # Backend API URL (n8n workflow endpoint)
@@ -97,7 +97,7 @@ Start the Vite development server:
 npm run dev
 ```
 
-The application will be available at `http://localhost:5173` (or another port if 5173 is busy).
+The application will be available at `http://localhost:3000` (or another port if 5173 is busy).
 
 ### Local Production Build
 
@@ -123,27 +123,28 @@ The application uses a multi-stage Dockerfile that builds the React app and serv
 docker build -t ocr-app .
 ```
 
-**Important**: Make sure your `.env` file is configured with the correct `VITE_BACKEND_URL` before building, as environment variables are baked into the build.
-
 #### Run the Container
 
 ```bash
-docker run -d -p 8080:80 --name ocr-app ocr-app
+docker run -d -p 3000:80 --name ocr-app -e VITE_BACKEND_URL=YOUR_N8N_URL ocr-app
 ```
 
-The application will be available at `http://localhost:8080`.
+Or through compose:
+
+```bash
+docker compose up -d
+```
+
+The application will be available at `http://localhost:3000`.
 
 #### Build with Custom Backend URL
 
 ```bash
-# Create .env file with your backend URL
-echo "VITE_BACKEND_URL=https://your-backend-url.com" > .env
-
 # Build the image
 docker build -t ocr-app .
 
 # Run the container
-docker run -d -p 8080:80 --name ocr-app ocr-app
+docker run -d -p 8080:80 --name ocr-app -e VITE_BACKEND_URL=YOUR_N8N_URL ocr-app
 ```
 
 #### Stop and Remove the Container
@@ -161,7 +162,7 @@ docker logs ocr-app
 
 ## Accessing Services
 
-- **Frontend (Development)**: http://localhost:5173
+- **Frontend (Development)**: http://localhost:3000
 - **Frontend (Docker Production)**: http://localhost:8080
 - **n8n Workflow Platform**: http://localhost:5678
 - **Ollama API**: http://localhost:11434
@@ -208,27 +209,11 @@ ocr_project/
 
 Press `Ctrl+C` in the terminal running the dev server.
 
-### Stop Docker Backend Services
-
-#### On Windows (PowerShell)
-
-```powershell
-.\run.ps1 -Action "DOWN"
-```
-
-#### On Linux/Mac
+### Stopping the compose stack:
 
 ```bash
 docker compose down
 ```
-
-### Stop Docker Frontend Container
-
-```bash
-docker stop ocr-app
-docker rm ocr-app
-```
-
 ## Configuration
 
 ### Updating Backend URL
@@ -299,7 +284,7 @@ ports:
 
 **For frontend Docker container**:
 ```bash
-docker run -d -p 9090:80 --name ocr-app ocr-app
+docker run -d -p 9090:80 --name ocr-app -e VITE_BACKEND_URL=YOUR_BACKEND_URL ocr-app
 ```
 
 ### Backend connection issues

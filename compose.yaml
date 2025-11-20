@@ -1,6 +1,6 @@
 services:
   ocr_chat:
-    image: grepsys.com/chat_ocr
+    image: droidzed/chat_ocr
     container_name: ocr_chat
     networks:
       - n8network
