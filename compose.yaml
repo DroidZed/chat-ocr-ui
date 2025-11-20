@@ -1,4 +1,17 @@
 services:
+  ocr_chat:
+    image: grepsys.com/chat_ocr
+    container_name: ocr_chat
+    networks:
+      - n8network
+    environment:
+      NODE_ENV: production
+      VITE_BACKEND_URL: http://n8n-workflow:5678
+    ports:
+      - 3000:80
+    depends_on:
+      n8n:
+        condition: service_started
   n8n:
     container_name: n8n-workflow
     image: docker.n8n.io/n8nio/n8n
