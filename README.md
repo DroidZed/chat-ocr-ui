@@ -123,7 +123,7 @@ The application uses a multi-stage Dockerfile that builds the React app and serv
 #### Build the Docker Image
 
 ```bash
-docker build -t droidzed/chat_ocr.
+docker build -t droidzed/chat_ocr .
 ```
 
 #### Run the Container
