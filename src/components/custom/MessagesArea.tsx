@@ -1,7 +1,7 @@
-import { useAtomValue } from 'jotai';
 import { useEffect, useRef } from 'react';
-import { messagesAtom, hasMessagesAtom } from '../../core/store';
 import MessageBubble from './MessageBubble';
+import { useAtomValue } from 'jotai';
+import { messagesAtom, hasMessagesAtom } from '../../core/store';
 
 export default function MessagesArea() {
   const messages = useAtomValue(messagesAtom);

@@ -1,25 +1,25 @@
 # syntax=docker/dockerfile:1
 
-ARG NODE_VERSION=22.15.1
+ARG BUN_VERSION=latest
 
 ################################################################################
 # Build stage
-FROM node:${NODE_VERSION}-alpine AS build
+FROM oven/bun:${BUN_VERSION} AS build
 
 # Set working directory
 WORKDIR /usr/src/app
 
 # Copy package files
-COPY package.json package-lock.json ./
+COPY package.json bun.lock ./
 
 # Install dependencies
-RUN npm ci
+RUN bun install --frozen-lockfile
 
 # Copy source files
 COPY . .
 
 # Build the application
-RUN npm run build
+RUN bun run build
 
 ################################################################################
 # Production stage

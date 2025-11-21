@@ -5,7 +5,7 @@ interface MessageBubbleProps {
   message: MessageListSchemaT[number];
 }
 
-const OcrResponseTable = ({ data }: { data: Record<string, any> }) => {
+const OcrResponseTable = ({ data }: { data: Record<string, unknown> }) => {
   const entries = Object.entries(data);
 
   if (entries.length === 0) {

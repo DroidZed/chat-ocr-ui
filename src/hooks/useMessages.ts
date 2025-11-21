@@ -15,7 +15,7 @@ interface AddMessageParams {
       key: string;
     }>;
   };
-  ocrResponse?: Record<string, any>;
+  ocrResponse?: Record<string, unknown>;
 }
 
 export const useMessages = () => {

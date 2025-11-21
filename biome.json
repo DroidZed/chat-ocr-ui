@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.3.5/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.7/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -31,7 +31,10 @@
     "rules": {
       "recommended": false
     },
-    "includes": ["**", "!dist"]
+    "includes": [
+      "**",
+      "!dist"
+    ]
   },
   "javascript": {
     "formatter": {
@@ -54,7 +57,9 @@
   },
   "overrides": [
     {
-      "includes": ["**/*.{ts,tsx}"],
+      "includes": [
+        "**/*.{ts,tsx}"
+      ],
       "linter": {
         "rules": {
           "complexity": {
@@ -122,7 +127,9 @@
       }
     },
     {
-      "includes": ["**/*.{ts,tsx}"],
+      "includes": [
+        "**/*.{ts,tsx}"
+      ],
       "javascript": {
         "globals": []
       }
@@ -173,7 +180,9 @@
       }
     },
     {
-      "includes": ["**/*.{ts,tsx}"],
+      "includes": [
+        "**/*.{ts,tsx}"
+      ],
       "linter": {
         "rules": {
           "complexity": {
@@ -200,7 +209,9 @@
       }
     },
     {
-      "includes": ["**/*.{ts,tsx}"],
+      "includes": [
+        "**/*.{ts,tsx}"
+      ],
       "linter": {
         "rules": {
           "correctness": {
@@ -211,13 +222,17 @@
       }
     },
     {
-      "includes": ["**/*.{ts,tsx}"],
+      "includes": [
+        "**/*.{ts,tsx}"
+      ],
       "linter": {
         "rules": {}
       }
     },
     {
-      "includes": ["**/*.{ts,tsx}"],
+      "includes": [
+        "**/*.{ts,tsx}"
+      ],
       "javascript": {
         "globals": [
           "onanimationend",

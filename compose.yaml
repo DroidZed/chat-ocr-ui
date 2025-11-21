@@ -1,7 +1,7 @@
 services:
   ocr_chat:
     image: droidzed/chat_ocr
-    container_name: ocr_chat
+    container_name: chat_ocr
     networks:
       - n8network
     environment:
@@ -63,7 +63,7 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=postgres
     ports:
-      - "5432:5432"
+      - "5433:5432"
     networks:
       - n8network
     volumes:

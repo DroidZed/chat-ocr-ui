@@ -16,5 +16,5 @@ type KeysToExtract = {
 }
 
 type AiResponse = {
-  [key: string]: any
+  [key: string]: unknown
 }
